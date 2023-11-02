@@ -6,6 +6,8 @@ inputs:
     description: 'Entry point of your API'
     required: true
     default: 'src/index.ts'
+  config:
+    description: 'Path of the config file (json)'
   name:
     description: 'Name of the package'
 runs:
