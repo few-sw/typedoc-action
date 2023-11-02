@@ -8,6 +8,7 @@ import { exec } from '@actions/exec';
 
 const entry = core.getInput('entry') || 'src/index.ts';
 const name = core.getInput('name');
+const configFile = core.getInput('config')
 
 const defaultTsconfig = `{
   "compilerOptions": {
@@ -80,6 +81,9 @@ async function getPackageJson() {
 
 async function ensureTsConfig() {
   let has = true;
+  if (configFile) {
+    return { hasTsConfig: has, tsConfigPath: path.resolve(configFile) };
+  }
   if (!existsSync('tsconfig.json')) {
     has = false;
     await fs.writeFile('tsconfig.json', defaultTsconfig);
