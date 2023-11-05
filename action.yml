@@ -8,6 +8,9 @@ inputs:
     default: 'src/index.ts'
   config:
     description: 'Path of the config file (json)'
+  pnpm: 
+    description: 'Specify if the pnpm package manager has to be used on the script'
+    default: 'false'
   name:
     description: 'Name of the package'
 runs:
