@@ -33,7 +33,7 @@ try {
 
   if (tsVersion) {
     // Install the same version of TypeScript as the project.
-    await exec(packageManager, ['install', `typescript@${tsVersion}`]);
+    await exec(packageManager, ['install', `typescript@${tsVersion}`, '-w']);
   }
 
   const args = [
