@@ -31,10 +31,10 @@ try {
 
   await writeTypedocJson(name || packageJson.name, tsConfigPath);
 
-  // if (tsVersion) {
-  //   // Install the same version of TypeScript as the project.
-  //   await exec(packageManager, ['install', `typescript@${tsVersion}`]);
-  // }
+  if (tsVersion) {
+    // Install the same version of TypeScript as the project.
+    await exec(packageManager, ['install', `typescript@${tsVersion}`]);
+  }
 
   const args = [
     fileURLToPath(new URL('node_modules/typedoc/bin/typedoc', import.meta.url)),
