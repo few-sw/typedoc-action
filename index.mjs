@@ -59,6 +59,7 @@ async function writeTypedocJson(name, tsConfigPath) {
     name,
     excludePrivate: false,
     hideGenerator: false,
+    githubPages: true,
     tsconfig: path.resolve(tsConfigPath),
     entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
     plugin: ['typedoc-plugin-katex'],
