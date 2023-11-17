@@ -57,7 +57,9 @@ async function writeTypedocJson(name, tsConfigPath) {
   const options = {
     out: path.resolve('docs'),
     name,
-    excludePrivate: false,
+    emit: "both",
+    skipErrorChecking: true,
+    excludePrivate: true,
     hideGenerator: false,
     githubPages: true,
     tsconfig: path.resolve(tsConfigPath),
