@@ -8,6 +8,9 @@ inputs:
     default: 'src/index.ts'
   config:
     description: 'Path of the config file (json)'
+  pnpm: 
+    description: 'Is pnpm package manager required on the action script ["true"/"false"]'
+    default: 'false'
   name:
     description: 'Name of the package'
 runs:

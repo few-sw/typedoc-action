@@ -9,6 +9,8 @@ import { exec } from '@actions/exec';
 const entry = core.getInput('entry') || 'src/index.ts';
 const name = core.getInput('name');
 const configFile = core.getInput('config')
+const pnpmInput = core.getInput('pnpm') || 'false';
+const packageManager = pnpmInput === 'true' ? 'pnpm' : 'npm';
 
 const defaultTsconfig = `{
   "compilerOptions": {
@@ -24,14 +26,14 @@ try {
 
   if (!existsSync('node_modules')) {
     core.warning('node_modules is not present. Running `npm install`...');
-    await exec('npm', ['install']);
+    await exec(packageManager, ['install']);
   }
 
   await writeTypedocJson(name || packageJson.name, tsConfigPath);
 
   if (tsVersion) {
     // Install the same version of TypeScript as the project.
-    await exec('npm', ['install', `typescript@${tsVersion}`]);
+    await exec(packageManager, ['install', `typescript@${tsVersion}`, '-w']);
   }
 
   const args = [
@@ -55,8 +57,11 @@ async function writeTypedocJson(name, tsConfigPath) {
   const options = {
     out: path.resolve('docs'),
     name,
+    emit: "both",
+    skipErrorChecking: true,
     excludePrivate: true,
-    hideGenerator: true,
+    hideGenerator: false,
+    githubPages: true,
     tsconfig: path.resolve(tsConfigPath),
     entryPoints: entry.split(/ +/).map((entry) => path.resolve(entry)),
     plugin: ['typedoc-plugin-katex'],

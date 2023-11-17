@@ -1,7 +1,7 @@
 {
   "name": "typedoc-action",
   "private": true,
-  "version": "2.6.0",
+  "version": "2.6.2",
   "description": "Build documentation using TypeDoc",
   "main": "index.js",
   "repository": {
@@ -16,9 +16,9 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "typedoc": "^0.25.1",
     "typedoc-plugin-katex": "^0.1.2",
-    "typescript": "~5.1.6"
+    "typedoc": "^0.25.3",
+    "typescript": "^4.9.4"
   },
   "prettier": {
     "arrowParens": "always",
