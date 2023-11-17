@@ -16,9 +16,10 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
-    "typedoc": "^0.25.1",
     "typedoc-plugin-katex": "^0.1.2",
-    "typescript": "~5.1.6"
+    "typedoc": "^0.25.3",
+    "typedoc-plugin-merge-modules": "^5.1.0",
+    "typescript": "^4.9.4"
   },
   "prettier": {
     "arrowParens": "always",
